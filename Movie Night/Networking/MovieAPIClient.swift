@@ -76,7 +76,7 @@ func retrieveMovieCertifications(completion: @escaping ([MovieCertification], Mo
 func performRequest(with endpoint: URLRequest, completion: @escaping (Results?, MovieError?) -> Void) {
     
     let task = downloader.jsonTask(with: endpoint) { json, error in
-        DispatchQueue.main.async {
+        
             guard var json = json else {
                
                 completion(nil, error)
@@ -112,7 +112,7 @@ func performRequest(with endpoint: URLRequest, completion: @escaping (Results?, 
                 return
             }
             completion(results, nil)
-        }
+        
     }
     
     task.resume()
